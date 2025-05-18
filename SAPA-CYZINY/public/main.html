@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scoreboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    const PASSWORD = "cyziny14";
+    const userPass = prompt("Enter the password to access the scoreboard:");
+    if (userPass !== PASSWORD) {
+      alert("Incorrect password! Access denied.");
+      document.body.innerHTML = "<h2 style='color:#888; text-align:center; margin-top: 40vh;'>Access Denied</h2>";
+      throw new Error("Access denied");
+    }
+  </script>
+</head>
+<body>
+  <h1>Color Team Scoreboard</h1>
+  <div style="font-size: 2em; margin-bottom: 20px;">● ▲ ■</div>
+  <div id="scoreboard"></div>
+
+  <button onclick="resetScores()" class="btn" style="background-color: red; margin-top: 20px;">
+    Reset All Scores
+  </button>
+
+  <p style="font-size: 0.8em; color: #888; margin-top: 40px;">by SAPA CYZINY</p>
+</body>
+<script src="script.js"></script>
+</html>

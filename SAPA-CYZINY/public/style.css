@@ -1,0 +1,94 @@
+/* Squid Game Theme */
+
+body {
+  font-family: 'Arial Black', sans-serif;
+  background-color: #0a0f0d; 
+
+
+  
+  color: #ff4da6; 
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 3.5em;
+  color: #ff4da6;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px #ff4da6;
+}
+
+#scoreboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.score-item {
+  background-color: #06402b;
+  border: 2px solid #ff4da6;
+  border-radius: 15px;
+  padding: 15px;
+  font-size: 1.2em;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(255, 77, 166, 0.3);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+label {
+  font-size: 1.1em;
+}
+
+input, select {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  width: 200px;
+  font-size: 1em;
+  background-color: #222;
+  color: #ff4da6;
+}
+
+input:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 8px #ff4da6;
+}
+
+.btn {
+  background-color: #ff4da6;
+  color: #0a0f0d;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 0 15px #ff4da6;
+  transition: 0.3s ease;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #ff3399;
+  box-shadow: 0 0 25px #ff4da6;
+}
+
+a.btn {
+  margin-top: 30px;
+  display: inline-block;
+}

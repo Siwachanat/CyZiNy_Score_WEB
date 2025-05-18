@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Team Score</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      text-align: center;
+      transition: background 0.3s ease;
+    }
+    h1 {
+      font-size: 3em;
+    }
+    #score {
+      font-size: 5em;
+      margin: 20px 0;
+    }
+    .symbol {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .credit {
+      font-size: 0.8em;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="symbol">▲ ● ■</div>
+  <h1 id="team-name">Team</h1>
+  <div id="score">0</div>
+  <p class="credit">by SAPA CYZINY</p>
+
+  <script>
+    // Get the team slug from URL
+    const teamSlug = decodeURIComponent(window.location.pathname.split('/').pop().toLowerCase());
+
+    // Map URL-safe slugs to official names in scores.json
+    const teamMap = {
+      "brown": "Brown",
+      "orange": "Orange",
+      "yellow": "Yellow",
+      "red": "Red",
+      "purple": "Purple",
+      "navy-blue": "Navy Blue",
+      "pink": "Pink",
+      "sky-blue": "Sky Blue",
+      "pale-green": "Pale Green",
+      "dark-green": "Dark Green"
+    };
+
+    // Background color themes for teams
+    const teamColors = {
+      "Brown": "#8b4513",
+      "Orange": "#ff7f00",
+      "Yellow": "#f0e130",
+      "Red": "#b22222",
+      "Purple": "#800080",
+      "Navy Blue": "#000080",
+      "Pink": "#ff69b4",
+      "Sky Blue": "#87ceeb",
+      "Pale Green": "#98fb98",
+      "Dark Green": "#006400"
+    };
+
+    const teamKey = teamMap[teamSlug];
+    if (!teamKey) {
+      document.body.innerHTML = `<h2>Unknown team: ${teamSlug}</h2>`;
+      throw new Error("Invalid team");
+    }
+
+    document.getElementById("team-name").textContent = teamKey;
+    document.body.style.backgroundColor = teamColors[teamKey] || "#222";
+
+    async function loadScore() {
+      const res = await fetch("/api/scores");
+      const data = await res.json();
+      document.getElementById("score").textContent = data[teamKey] ?? 0;
+    }
+
+    loadScore();
+    setInterval(loadScore, 3000);
+  </script>
+</body>
+</html>
